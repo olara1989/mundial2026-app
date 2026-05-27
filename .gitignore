@@ -1,0 +1,41 @@
+# Dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Build
+dist/
+build/
+*.log
+
+# Vercel
+.vercel
+.vercel/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Caché
+.cache/
+
+# Temporal
+temp/
+tmp/

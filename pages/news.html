@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚽ Noticias - World Cup 2026 Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⚽</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@400;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <navbar>
+    <div class="container">
+      <div class="navbar">
+        <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="teams.html">Equipos</a></li>
+          <li><a href="matches.html">Partidos</a></li>
+          <li><a href="standings.html">Posiciones</a></li>
+          <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="news.html" class="active">Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </navbar>
+
+  <!-- HERO -->
+  <section class="hero" style="height: 40vh; padding-top: 80px;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 style="font-size: 3rem;">📰 ÚLTIMAS NOTICIAS</h1>
+        <p>Mantente informado de todo lo que sucede en el Mundial 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section class="section">
+    <div class="container">
+      <div id="news-container" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>🌍 ABOUT</h4>
+          <ul>
+            <li><a href="#">Sobre el Mundial 2026</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>⚽ CONTENIDO</h4>
+          <ul>
+            <li><a href="teams.html">Equipos</a></li>
+            <li><a href="matches.html">Partidos</a></li>
+            <li><a href="standings.html">Posiciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 World Cup Hub. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script>
+    const news = [
+      {
+        id: 1,
+        title: 'Argentina domina las apuestas del torneo',
+        category: 'Favoritos',
+        date: '2026-05-20',
+        emoji: '🎉',
+        excerpt: 'Con su equipo en excelente forma, Argentina lidera las apuestas para coronarse campeona mundial con probabilidades muy favorables.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      },
+      {
+        id: 2,
+        title: 'Young talents que brillarán en el 2026',
+        category: 'Protagonistas',
+        date: '2026-05-18',
+        emoji: '⭐',
+        excerpt: 'Descubre los jóvenes promesas que prometen revolucionar el fútbol mundial en esta edición del Mundial.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        id: 3,
+        title: 'Estadios de lujo listos para la fiesta',
+        category: 'Infraestructura',
+        date: '2026-05-15',
+        emoji: '🏟️',
+        excerpt: 'Los estadios modernos de América del Norte prometen ofrecer la mejor experiencia jamás vista en un torneo.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        id: 4,
+        title: 'Los favoritos ya están definidos',
+        category: 'Análisis',
+        date: '2026-05-12',
+        emoji: '🏆',
+        excerpt: 'Se definen los favoritos que buscarán conquistar el título mundial en 2026.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        id: 5,
+        title: 'Transmisión en realidad virtual confirmada',
+        category: 'Tecnología',
+        date: '2026-05-10',
+        emoji: '📹',
+        excerpt: 'Tecnología revolucionaria llevará la experiencia del Mundial a nuevos niveles de inmersión.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        id: 6,
+        title: 'Récord de entradas vendidas',
+        category: 'Venta de Entradas',
+        date: '2026-05-08',
+        emoji: '🎫',
+        excerpt: 'El entusiasmo de los aficionados rompe todos los récords históricos de venta de entradas.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        id: 7,
+        title: 'Calendario de partidos oficializado',
+        category: 'Calendario',
+        date: '2026-05-05',
+        emoji: '📅',
+        excerpt: 'La FIFA confirma el calendario completo con las fechas y horarios de todos los encuentros.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      },
+      {
+        id: 8,
+        title: 'Participación de 32 naciones confirmada',
+        category: 'Participantes',
+        date: '2026-04-30',
+        emoji: '🌍',
+        excerpt: 'Las 32 selecciones nacionales que participarán en el torneo han sido confirmadas oficialmente.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      }
+    ];
+
+    function renderNews() {
+      const container = document.getElementById('news-container');
+      container.innerHTML = '';
+
+      news.forEach((article, index) => {
+        const card = document.createElement('div');
+        card.className = 'card news-card';
+        card.style.cursor = 'pointer';
+        card.style.animation = `slideUp 0.6s ease-out ${index * 0.05}s both`;
+
+        const date = new Date(article.date).toLocaleDateString('es-ES', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+
+        card.innerHTML = `
+          <div class="news-image">${article.emoji}</div>
+          <div class="news-content">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="badge badge-secondary" style="font-size: 0.75rem;">${article.category}</span>
+            </div>
+            <div class="news-date">${date}</div>
+            <h3>${article.title}</h3>
+            <p class="news-excerpt">${article.excerpt}</p>
+            <a href="#" class="read-more">Leer más →</a>
+          </div>
+        `;
+
+        card.querySelector('.read-more').addEventListener('click', (e) => {
+          e.preventDefault();
+          showNewsModal(article);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function showNewsModal(article) {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        animation: fadeIn 0.3s ease-out;
+      `;
+
+      const content = document.createElement('div');
+      content.className = 'card';
+      content.style.cssText = `
+        max-width: 700px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 2rem;
+        position: relative;
+        animation: scaleIn 0.3s ease-out;
+      `;
+
+      content.innerHTML = `
+        <button style="
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: transparent;
+          border: none;
+          color: var(--neon-cyan);
+          font-size: 1.5rem;
+          cursor: pointer;
+        ">✕</button>
+
+        <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">
+          ${article.emoji}
+        </div>
+
+        <span class="badge badge-primary">${article.category}</span>
+
+        <h2 style="text-align: left; margin: 1rem 0;">${article.title}</h2>
+
+        <p style="text-align: left; color: var(--text-tertiary); margin-bottom: 1.5rem; font-size: 0.9rem;">
+          📅 ${new Date(article.date).toLocaleDateString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </p>
+
+        <div style="background: rgba(0, 240, 255, 0.1); padding: 1.5rem; border-radius: 1rem; border-left: 4px solid var(--neon-cyan); margin-bottom: 1.5rem;">
+          <p style="line-height: 1.8;">${article.content}</p>
+        </div>
+
+        <div style="background: rgba(157, 78, 221, 0.1); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border-left: 3px solid var(--neon-purple);">
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">
+            ⚠️ <strong>Nota:</strong> Esta es una noticia simulada para demostración. Para noticias actuales, visita los sitios oficiales de la FIFA.
+          </p>
+        </div>
+      `;
+
+      content.querySelector('button').addEventListener('click', () => modal.remove());
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+
+      modal.appendChild(content);
+      document.body.appendChild(modal);
+    }
+
+    renderNews();
+  </script>
+</body>
+</html>

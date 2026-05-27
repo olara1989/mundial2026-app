@@ -1,0 +1,458 @@
+[
+  {
+    "group": "A",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Argentina",
+        "flag": "🇦🇷",
+        "matches": 3,
+        "wins": 3,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 9,
+        "goals_against": 2,
+        "goal_difference": 7,
+        "points": 9
+      },
+      {
+        "position": 2,
+        "team": "France",
+        "flag": "🇫🇷",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 8,
+        "goals_against": 3,
+        "goal_difference": 5,
+        "points": 7
+      },
+      {
+        "position": 3,
+        "team": "Netherlands",
+        "flag": "🇳🇱",
+        "matches": 3,
+        "wins": 1,
+        "draws": 1,
+        "losses": 1,
+        "goals_for": 5,
+        "goals_against": 5,
+        "goal_difference": 0,
+        "points": 4
+      },
+      {
+        "position": 4,
+        "team": "Saudi Arabia",
+        "flag": "🇸🇦",
+        "matches": 3,
+        "wins": 0,
+        "draws": 0,
+        "losses": 3,
+        "goals_for": 2,
+        "goals_against": 14,
+        "goal_difference": -12,
+        "points": 0
+      }
+    ]
+  },
+  {
+    "group": "B",
+    "standings": [
+      {
+        "position": 1,
+        "team": "England",
+        "flag": "🏴󐁧󐁢󐁥󐁮󐁧󐁿",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 8,
+        "goals_against": 2,
+        "goal_difference": 6,
+        "points": 7
+      },
+      {
+        "position": 2,
+        "team": "Brazil",
+        "flag": "🇧🇷",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 7,
+        "goals_against": 3,
+        "goal_difference": 4,
+        "points": 7
+      },
+      {
+        "position": 3,
+        "team": "Mexico",
+        "flag": "🇲🇽",
+        "matches": 3,
+        "wins": 1,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 4,
+        "goals_against": 5,
+        "goal_difference": -1,
+        "points": 3
+      },
+      {
+        "position": 4,
+        "team": "Japan",
+        "flag": "🇯🇵",
+        "matches": 3,
+        "wins": 0,
+        "draws": 0,
+        "losses": 3,
+        "goals_for": 2,
+        "goals_against": 13,
+        "goal_difference": -11,
+        "points": 0
+      }
+    ]
+  },
+  {
+    "group": "C",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Spain",
+        "flag": "🇪🇸",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 7,
+        "goals_against": 2,
+        "goal_difference": 5,
+        "points": 7
+      },
+      {
+        "position": 2,
+        "team": "Germany",
+        "flag": "🇩🇪",
+        "matches": 3,
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 5,
+        "goals_against": 2,
+        "goal_difference": 3,
+        "points": 5
+      },
+      {
+        "position": 3,
+        "team": "Croatia",
+        "flag": "🇭🇷",
+        "matches": 3,
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 3,
+        "goals_against": 6,
+        "goal_difference": -3,
+        "points": 1
+      },
+      {
+        "position": 4,
+        "team": "Canada",
+        "flag": "🇨🇦",
+        "matches": 3,
+        "wins": 0,
+        "draws": 0,
+        "losses": 3,
+        "goals_for": 1,
+        "goals_against": 10,
+        "goal_difference": -9,
+        "points": 0
+      }
+    ]
+  },
+  {
+    "group": "D",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Belgium",
+        "flag": "🇧🇪",
+        "matches": 3,
+        "wins": 3,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 10,
+        "goals_against": 1,
+        "goal_difference": 9,
+        "points": 9
+      },
+      {
+        "position": 2,
+        "team": "Portugal",
+        "flag": "🇵🇹",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 6,
+        "goals_against": 2,
+        "goal_difference": 4,
+        "points": 7
+      },
+      {
+        "position": 3,
+        "team": "Italy",
+        "flag": "🇮🇹",
+        "matches": 3,
+        "wins": 1,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 4,
+        "goals_against": 5,
+        "goal_difference": -1,
+        "points": 3
+      },
+      {
+        "position": 4,
+        "team": "Switzerland",
+        "flag": "🇨🇭",
+        "matches": 3,
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 2,
+        "goals_against": 8,
+        "goal_difference": -6,
+        "points": 1
+      }
+    ]
+  },
+  {
+    "group": "E",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Uruguay",
+        "flag": "🇺🇾",
+        "matches": 3,
+        "wins": 2,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 7,
+        "goals_against": 4,
+        "goal_difference": 3,
+        "points": 6
+      },
+      {
+        "position": 2,
+        "team": "Colombia",
+        "flag": "🇨🇴",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 6,
+        "goals_against": 2,
+        "goal_difference": 4,
+        "points": 7
+      },
+      {
+        "position": 3,
+        "team": "South Korea",
+        "flag": "🇰🇷",
+        "matches": 3,
+        "wins": 1,
+        "draws": 1,
+        "losses": 1,
+        "goals_for": 4,
+        "goals_against": 4,
+        "goal_difference": 0,
+        "points": 4
+      },
+      {
+        "position": 4,
+        "team": "Morocco",
+        "flag": "🇲🇦",
+        "matches": 3,
+        "wins": 0,
+        "draws": 0,
+        "losses": 3,
+        "goals_for": 1,
+        "goals_against": 8,
+        "goal_difference": -7,
+        "points": 0
+      }
+    ]
+  },
+  {
+    "group": "F",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Australia",
+        "flag": "🇦🇺",
+        "matches": 3,
+        "wins": 2,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 5,
+        "goals_against": 4,
+        "goal_difference": 1,
+        "points": 6
+      },
+      {
+        "position": 2,
+        "team": "France",
+        "flag": "🇫🇷",
+        "matches": 3,
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 5,
+        "goals_against": 3,
+        "goal_difference": 2,
+        "points": 5
+      },
+      {
+        "position": 3,
+        "team": "Peru",
+        "flag": "🇵🇪",
+        "matches": 3,
+        "wins": 1,
+        "draws": 1,
+        "losses": 1,
+        "goals_for": 3,
+        "goals_against": 3,
+        "goal_difference": 0,
+        "points": 4
+      },
+      {
+        "position": 4,
+        "team": "Denmark",
+        "flag": "🇩🇰",
+        "matches": 3,
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 1,
+        "goals_against": 4,
+        "goal_difference": -3,
+        "points": 1
+      }
+    ]
+  },
+  {
+    "group": "G",
+    "standings": [
+      {
+        "position": 1,
+        "team": "USA",
+        "flag": "🇺🇸",
+        "matches": 3,
+        "wins": 2,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 5,
+        "goals_against": 3,
+        "goal_difference": 2,
+        "points": 6
+      },
+      {
+        "position": 2,
+        "team": "Netherlands",
+        "flag": "🇳🇱",
+        "matches": 3,
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 4,
+        "goals_against": 2,
+        "goal_difference": 2,
+        "points": 5
+      },
+      {
+        "position": 3,
+        "team": "Senegal",
+        "flag": "🇸🇳",
+        "matches": 3,
+        "wins": 1,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 3,
+        "goals_against": 4,
+        "goal_difference": -1,
+        "points": 3
+      },
+      {
+        "position": 4,
+        "team": "Wales",
+        "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+        "matches": 3,
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 2,
+        "goals_against": 5,
+        "goal_difference": -3,
+        "points": 1
+      }
+    ]
+  },
+  {
+    "group": "H",
+    "standings": [
+      {
+        "position": 1,
+        "team": "Greece",
+        "flag": "🇬🇷",
+        "matches": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 6,
+        "goals_against": 2,
+        "goal_difference": 4,
+        "points": 7
+      },
+      {
+        "position": 2,
+        "team": "Poland",
+        "flag": "🇵🇱",
+        "matches": 3,
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 4,
+        "goals_against": 2,
+        "goal_difference": 2,
+        "points": 5
+      },
+      {
+        "position": 3,
+        "team": "Egypt",
+        "flag": "🇪🇬",
+        "matches": 3,
+        "wins": 1,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 3,
+        "goals_against": 5,
+        "goal_difference": -2,
+        "points": 3
+      },
+      {
+        "position": 4,
+        "team": "Costa Rica",
+        "flag": "🇨🇷",
+        "matches": 3,
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 2,
+        "goals_against": 6,
+        "goal_difference": -4,
+        "points": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚽ Partidos - World Cup 2026 Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⚽</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@400;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <navbar>
+    <div class="container">
+      <div class="navbar">
+        <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="teams.html">Equipos</a></li>
+          <li><a href="matches.html" class="active">Partidos</a></li>
+          <li><a href="standings.html">Posiciones</a></li>
+          <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="news.html">Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </navbar>
+
+  <!-- HERO -->
+  <section class="hero" style="height: 40vh; padding-top: 80px;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 style="font-size: 3rem;">🎯 CALENDARIO DE PARTIDOS</h1>
+        <p>Todos los encuentros del Mundial 2026 en un solo lugar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">FILTRAR PARTIDOS</h2>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <button onclick="filterMatches('all')" style="
+          padding: 0.75rem 1.5rem;
+          background: var(--gradient-primary);
+          color: white;
+          border: none;
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+        ">TODOS</button>
+        <button onclick="filterMatches('upcoming')" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-cyan);
+          border: 2px solid var(--neon-cyan);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          opacity: 0.6;
+        ">POR JUGAR</button>
+        <button onclick="filterMatches('finished')" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-green);
+          border: 2px solid var(--neon-green);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          opacity: 0.6;
+        ">FINALIZADOS</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTIDOS -->
+  <section class="section">
+    <div class="container">
+      <div id="matches-container" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>🌍 ABOUT</h4>
+          <ul>
+            <li><a href="#">Sobre el Mundial 2026</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>⚽ CONTENIDO</h4>
+          <ul>
+            <li><a href="teams.html">Equipos</a></li>
+            <li><a href="matches.html">Partidos</a></li>
+            <li><a href="standings.html">Posiciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 World Cup Hub. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script>
+    let allMatches = [];
+
+    async function loadMatches() {
+      try {
+        allMatches = await api.getMatches();
+        renderMatches(allMatches);
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('matches-container').innerHTML = '<p class="error">Error al cargar partidos</p>';
+      }
+    }
+
+    function renderMatches(matches) {
+      const container = document.getElementById('matches-container');
+      container.innerHTML = '';
+
+      matches.forEach((match, index) => {
+        const card = document.createElement('div');
+        card.className = 'card match-card';
+        card.style.animation = `slideUp 0.6s ease-out ${index * 0.1}s both`;
+
+        const dateObj = new Date(match.date);
+        const formattedDate = dateObj.toLocaleDateString('es-ES', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+
+        const statusBadge = match.status === 'finished' 
+          ? `<span class="badge badge-success">✓ FINALIZADO</span>`
+          : `<span class="badge badge-secondary">Próximo</span>`;
+
+        card.innerHTML = `
+          <div class="match-team">
+            <div class="match-team-flag">${match.flag_a}</div>
+            <div class="match-team-info">
+              <h4>${match.team_a}</h4>
+            </div>
+          </div>
+          <div class="match-center">
+            <div class="match-time">${formattedDate}</div>
+            ${match.goals_a !== null ? 
+              `<div style="font-size: 1.5rem; font-weight: 700; color: var(--neon-cyan);">${match.goals_a} - ${match.goals_b}</div>` :
+              `<div class="match-status">${match.time}</div>`
+            }
+            ${statusBadge}
+          </div>
+          <div class="match-team" style="justify-content: flex-end;">
+            <div class="match-team-info">
+              <h4>${match.team_b}</h4>
+            </div>
+            <div class="match-team-flag">${match.flag_b}</div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function filterMatches(status) {
+      if (status === 'all') {
+        renderMatches(allMatches);
+      } else {
+        const filtered = allMatches.filter(m => m.status === status);
+        renderMatches(filtered);
+      }
+    }
+
+    loadMatches();
+  </script>
+</body>
+</html>

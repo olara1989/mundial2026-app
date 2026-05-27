@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚽ Equipos - World Cup 2026 Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⚽</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@400;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <navbar>
+    <div class="container">
+      <div class="navbar">
+        <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="teams.html" class="active">Equipos</a></li>
+          <li><a href="matches.html">Partidos</a></li>
+          <li><a href="standings.html">Posiciones</a></li>
+          <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="news.html">Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </navbar>
+
+  <!-- HERO -->
+  <section class="hero" style="height: 40vh; padding-top: 80px;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 style="font-size: 3rem;">🏆 EQUIPOS DEL MUNDIAL 2026</h1>
+        <p>Conoce a los 32 equipos que competirán por la gloria mundial</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">FILTRAR POR GRUPO</h2>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <button data-group="ALL" style="
+          padding: 0.75rem 1.5rem;
+          background: var(--gradient-primary);
+          color: white;
+          border: none;
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          transition: all var(--transition-normal);
+          opacity: 1;
+        ">TODOS</button>
+        <button data-group="A" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-cyan);
+          border: 2px solid var(--neon-cyan);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          transition: all var(--transition-normal);
+          opacity: 0.6;
+        ">GRUPO A</button>
+        <button data-group="B" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-cyan);
+          border: 2px solid var(--neon-cyan);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          transition: all var(--transition-normal);
+          opacity: 0.6;
+        ">GRUPO B</button>
+        <button data-group="C" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-cyan);
+          border: 2px solid var(--neon-cyan);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          transition: all var(--transition-normal);
+          opacity: 0.6;
+        ">GRUPO C</button>
+        <button data-group="D" style="
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          color: var(--neon-cyan);
+          border: 2px solid var(--neon-cyan);
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          font-weight: 700;
+          transition: all var(--transition-normal);
+          opacity: 0.6;
+        ">GRUPO D</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPOS GRID -->
+  <section class="section">
+    <div class="container">
+      <div id="teams-grid" class="grid-3"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>🌍 ABOUT</h4>
+          <ul>
+            <li><a href="#">Sobre el Mundial 2026</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>⚽ CONTENIDO</h4>
+          <ul>
+            <li><a href="teams.html">Equipos</a></li>
+            <li><a href="matches.html">Partidos</a></li>
+            <li><a href="standings.html">Posiciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 World Cup Hub. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/teams.js"></script>
+</body>
+</html>

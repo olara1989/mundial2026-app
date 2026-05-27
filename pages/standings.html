@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚽ Posiciones - World Cup 2026 Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⚽</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@400;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <navbar>
+    <div class="container">
+      <div class="navbar">
+        <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="teams.html">Equipos</a></li>
+          <li><a href="matches.html">Partidos</a></li>
+          <li><a href="standings.html" class="active">Posiciones</a></li>
+          <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="news.html">Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </navbar>
+
+  <!-- HERO -->
+  <section class="hero" style="height: 40vh; padding-top: 80px;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 style="font-size: 3rem;">📊 TABLA DE POSICIONES</h1>
+        <p>Clasificación actualizada de todos los grupos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSICIONES -->
+  <section class="section">
+    <div class="container">
+      <div id="standings-container"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>🌍 ABOUT</h4>
+          <ul>
+            <li><a href="#">Sobre el Mundial 2026</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>⚽ CONTENIDO</h4>
+          <ul>
+            <li><a href="teams.html">Equipos</a></li>
+            <li><a href="matches.html">Partidos</a></li>
+            <li><a href="standings.html">Posiciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 World Cup Hub. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script>
+    async function loadStandings() {
+      try {
+        const standings = await api.getStandings();
+        const container = document.getElementById('standings-container');
+        
+        standings.forEach((group, groupIndex) => {
+          const groupSection = document.createElement('div');
+          groupSection.style.marginBottom = '2rem';
+          groupSection.style.animation = `slideUp 0.6s ease-out ${groupIndex * 0.1}s both`;
+
+          const title = document.createElement('h3');
+          title.textContent = `📍 GRUPO ${group.group}`;
+          title.style.marginBottom = '1rem';
+          title.style.color = 'var(--text-primary)';
+
+          const tableHTML = `
+            <div class="card">
+              <table class="standings-table">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Equipo</th>
+                    <th>PJ</th>
+                    <th>G</th>
+                    <th>E</th>
+                    <th>P</th>
+                    <th>GF</th>
+                    <th>GC</th>
+                    <th>DG</th>
+                    <th>Pts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${group.standings.map(team => `
+                    <tr>
+                      <td class="team-position">${team.position}</td>
+                      <td><strong>${team.flag} ${team.team}</strong></td>
+                      <td>${team.matches}</td>
+                      <td style="color: var(--neon-green);">${team.wins}</td>
+                      <td>${team.draws}</td>
+                      <td style="color: var(--neon-pink);">${team.losses}</td>
+                      <td>${team.goals_for}</td>
+                      <td>${team.goals_against}</td>
+                      <td style="color: var(--neon-cyan);">${team.goal_difference > 0 ? '+' : ''}${team.goal_difference}</td>
+                      <td style="font-weight: 700; color: var(--neon-purple);">${team.points}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+
+          groupSection.appendChild(title);
+          groupSection.innerHTML += tableHTML;
+
+          container.appendChild(groupSection);
+        });
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('standings-container').innerHTML = '<p class="error">Error al cargar posiciones</p>';
+      }
+    }
+
+    loadStandings();
+  </script>
+</body>
+</html>
