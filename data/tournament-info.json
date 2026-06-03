@@ -1,0 +1,171 @@
+{
+  "general": {
+    "name": "FIFA World Cup 2026",
+    "year": 2026,
+    "motto": "El Mundial de América del Norte",
+    "description": "La Copa Mundial de la FIFA 2026 será el torneo de fútbol más grande jamás organizado, con 48 equipos compitiendo en tres países del continente americano.",
+    "totalTeams": 48,
+    "totalMatches": 80,
+    "startDate": "2026-06-11",
+    "endDate": "2026-07-19"
+  },
+  "hosts": {
+    "countries": [
+      {
+        "name": "México",
+        "flag": "🇲🇽",
+        "role": "Anfitrión"
+      },
+      {
+        "name": "Estados Unidos",
+        "flag": "🇺🇸",
+        "role": "Anfitrión"
+      },
+      {
+        "name": "Canadá",
+        "flag": "🇨🇦",
+        "role": "Anfitrión"
+      }
+    ]
+  },
+  "venues": [
+    {
+      "id": 1,
+      "name": "SoFi Stadium",
+      "city": "Los Ángeles",
+      "country": "Estados Unidos",
+      "capacity": 70240,
+      "region": "California"
+    },
+    {
+      "id": 2,
+      "name": "MetLife Stadium",
+      "city": "Nueva Jersey",
+      "country": "Estados Unidos",
+      "capacity": 82500,
+      "region": "Nueva Jersey"
+    },
+    {
+      "id": 3,
+      "name": "AT&T Stadium",
+      "city": "Arlington",
+      "country": "Estados Unidos",
+      "capacity": 80000,
+      "region": "Texas"
+    },
+    {
+      "id": 4,
+      "name": "Mercedes-Benz Stadium",
+      "city": "Atlanta",
+      "country": "Estados Unidos",
+      "capacity": 71000,
+      "region": "Georgia"
+    },
+    {
+      "id": 5,
+      "name": "Arrowhead Stadium",
+      "city": "Kansas City",
+      "country": "Estados Unidos",
+      "capacity": 76416,
+      "region": "Kansas"
+    },
+    {
+      "id": 6,
+      "name": "Levi's Stadium",
+      "city": "Santa Clara",
+      "country": "Estados Unidos",
+      "capacity": 68500,
+      "region": "California"
+    },
+    {
+      "id": 7,
+      "name": "Acrisure Stadium",
+      "city": "Pittsburgh",
+      "country": "Estados Unidos",
+      "capacity": 69479,
+      "region": "Pensilvania"
+    },
+    {
+      "id": 8,
+      "name": "NRG Stadium",
+      "city": "Houston",
+      "country": "Estados Unidos",
+      "capacity": 72220,
+      "region": "Texas"
+    },
+    {
+      "id": 9,
+      "name": "Estadio BBVA",
+      "city": "Monterrey",
+      "country": "México",
+      "capacity": 81044,
+      "region": "Nuevo León"
+    },
+    {
+      "id": 10,
+      "name": "Estadio Azteca",
+      "city": "Ciudad de México",
+      "country": "México",
+      "capacity": 87523,
+      "region": "Ciudad de México"
+    },
+    {
+      "id": 11,
+      "name": "Estadio Guadalajara",
+      "city": "Guadalajara",
+      "country": "México",
+      "capacity": 48000,
+      "region": "Jalisco"
+    },
+    {
+      "id": 12,
+      "name": "BC Place Stadium",
+      "city": "Vancouver",
+      "country": "Canadá",
+      "capacity": 54500,
+      "region": "Columbia Británica"
+    }
+  ],
+  "mascots": [
+    {
+      "name": "Striker",
+      "emoji": "⚡",
+      "description": "Representa la velocidad y energía del fútbol",
+      "color": "Azul"
+    },
+    {
+      "name": "Kinétic",
+      "emoji": "🔥",
+      "description": "Simboliza la pasión y el movimiento",
+      "color": "Naranja"
+    },
+    {
+      "name": "Harmony",
+      "emoji": "🌟",
+      "description": "Refleja la unidad y armonía entre países",
+      "color": "Dorado"
+    }
+  ],
+  "facts": [
+    {
+      "icon": "🌍",
+      "title": "Primer Mundial con 48 Equipos",
+      "description": "La primera Copa Mundial en expandirse de 32 a 48 equipos participantes"
+    },
+    {
+      "icon": "🏟️",
+      "title": "12 Estadios de Clase Mundial",
+      "description": "Infraestructura moderna distribuida entre los tres países anfitriones"
+    },
+    {
+      "icon": "🗓️",
+      "title": "52 Días de Fútbol Puro",
+      "description": "Del 11 de junio al 19 de julio de 2026"
+    },
+    {
+      "icon": "🎯",
+      "title": "80 Partidos Emocionantes",
+      "description": "Más partidos que en cualquier Copa Mundial anterior"
+    }
+  ]
+}
