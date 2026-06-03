@@ -1,37 +1,43 @@
 /* ==========================================
    WORLD CUP 2026 HUB - Estilos Principales
+   Identidad Gráfica Oficial FIFA World Cup 2026
    ========================================== */
 
-/* ===== VARIABLES CSS ===== */
+/* ===== VARIABLES CSS - IDENTIDAD OFICIAL 2026 ===== */
 :root {
-  /* Colores principales */
-  --primary-dark: #0a0e27;
-  --secondary-dark: #1a1f3a;
-  --tertiary-dark: #2d3561;
+  /* Colores Oficiales FIFA World Cup 2026 */
+  --primary-red: #E5173B;        /* Rojo oficial */
+  --primary-blue: #004687;       /* Azul oficial */
+  --primary-silver: #B4B4B6;     /* Plateado oficial */
+  --accent-gold: #FFD700;        /* Dorado para acentos */
   
-  /* Gradientes neón */
-  --gradient-primary: linear-gradient(135deg, #9d4edd 0%, #3a0ca3 50%, #00d4ff 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff006e 0%, #fb5607 50%, #ffbe0b 100%);
-  --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #0077be 50%, #9d4edd 100%);
+  /* Paleta secundaria */
+  --dark-bg: #0f1621;            /* Fondo oscuro */
+  --secondary-bg: #1a2332;       /* Fondo secundario */
+  --tertiary-bg: #2d3d5f;        /* Fondo terciario */
   
-  /* Colores neón */
-  --neon-cyan: #00f0ff;
-  --neon-purple: #b537f2;
-  --neon-pink: #ff006e;
-  --neon-green: #00ff88;
-  --neon-orange: #ff6b00;
+  /* Gradientes basados en identidad oficial */
+  --gradient-primary: linear-gradient(135deg, #E5173B 0%, #004687 50%, #B4B4B6 100%);
+  --gradient-secondary: linear-gradient(135deg, #E5173B 0%, #FFD700 50%, #004687 100%);
+  --gradient-accent: linear-gradient(135deg, #004687 0%, #E5173B 50%, #FFD700 100%);
+  
+  /* Colores de acentos mejorados */
+  --accent-red: #FF4444;
+  --accent-blue: #0066FF;
+  --accent-green: #00DD88;
+  --accent-gold: #FFD700;
   
   /* Colores de texto */
   --text-primary: #ffffff;
-  --text-secondary: #b0b0d9;
-  --text-tertiary: #6b7280;
+  --text-secondary: #d0d0d0;
+  --text-tertiary: #808080;
   
   /* Sombras y efectos */
-  --shadow-sm: 0 4px 15px rgba(157, 78, 221, 0.1);
-  --shadow-md: 0 8px 30px rgba(157, 78, 221, 0.2);
-  --shadow-lg: 0 15px 50px rgba(157, 78, 221, 0.3);
-  --glow-sm: 0 0 10px rgba(0, 240, 255, 0.3);
-  --glow-md: 0 0 20px rgba(157, 78, 221, 0.5);
+  --shadow-sm: 0 4px 15px rgba(229, 23, 59, 0.15);
+  --shadow-md: 0 8px 30px rgba(0, 70, 135, 0.2);
+  --shadow-lg: 0 15px 50px rgba(229, 23, 59, 0.25);
+  --glow-red: 0 0 20px rgba(229, 23, 59, 0.4);
+  --glow-blue: 0 0 20px rgba(0, 70, 135, 0.4);
   
   /* Espaciados */
   --spacing-xs: 0.5rem;
@@ -64,7 +70,7 @@ html {
 
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1633 100%);
+  background: linear-gradient(135deg, #0f1621 0%, #1a2332 50%, #0d0f1a 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
@@ -77,23 +83,23 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(157, 78, 221, 0.1);
+  background: rgba(229, 23, 59, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neon-purple);
+  background: var(--primary-red);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-cyan);
+  background: var(--primary-blue);
 }
 
 /* ===== TIPOGRAFÍA ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', 'Arial Black', sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
 }
 
 h1 {
@@ -103,13 +109,17 @@ h1 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-transform: uppercase;
-  text-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+  text-shadow: 0 0 30px rgba(229, 23, 59, 0.3);
 }
 
 h2 {
   font-size: 2.5rem;
   color: var(--text-primary);
   margin-bottom: var(--spacing-lg);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 h3 {
@@ -143,10 +153,10 @@ navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(10, 14, 39, 0.95);
+  background: rgba(15, 22, 33, 0.97);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid var(--primary-red);
+  box-shadow: 0 4px 30px rgba(229, 23, 59, 0.2);
 }
 
 .navbar {
@@ -172,7 +182,7 @@ navbar {
 }
 
 .nav-brand:hover {
-  text-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+  filter: drop-shadow(0 0 20px rgba(229, 23, 59, 0.6));
 }
 
 .nav-links {
@@ -195,13 +205,13 @@ navbar {
   bottom: -5px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
+  height: 3px;
+  background: var(--primary-red);
   transition: width var(--transition-normal);
 }
 
 .nav-links a:hover {
-  color: var(--text-primary);
+  color: var(--primary-red);
 }
 
 .nav-links a:hover::after {
@@ -209,7 +219,7 @@ navbar {
 }
 
 .nav-links a.active {
-  color: var(--text-primary);
+  color: var(--primary-red);
 }
 
 .nav-links a.active::after {
@@ -256,43 +266,44 @@ navbar {
 .btn-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+  box-shadow: 0 0 20px rgba(229, 23, 59, 0.5);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.7);
+  box-shadow: 0 0 40px rgba(229, 23, 59, 0.8);
   transform: translateY(-2px);
 }
 
 /* Botón secundario */
 .btn-secondary {
   background: transparent;
-  color: var(--neon-cyan);
-  border: 2px solid var(--neon-cyan);
-  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  box-shadow: inset 0 0 10px rgba(0, 70, 135, 0.2);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 240, 255, 0.1);
-  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.4);
+  background: rgba(0, 70, 135, 0.1);
+  box-shadow: inset 0 0 20px rgba(0, 70, 135, 0.4), 0 0 20px rgba(0, 70, 135, 0.3);
+  color: var(--primary-blue);
 }
 
 /* Botón outline */
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--neon-purple);
+  border: 2px solid var(--primary-red);
 }
 
 .btn-outline:hover {
-  background: var(--neon-purple);
-  box-shadow: 0 0 20px rgba(181, 55, 242, 0.6);
+  background: var(--primary-red);
+  box-shadow: 0 0 20px rgba(229, 23, 59, 0.6);
 }
 
 /* ===== TARJETAS ===== */
 .card {
-  background: rgba(45, 53, 97, 0.4);
-  border: 1px solid rgba(157, 78, 221, 0.2);
+  background: rgba(26, 35, 50, 0.6);
+  border: 1px solid rgba(229, 23, 59, 0.25);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   backdrop-filter: blur(10px);
@@ -309,15 +320,15 @@ navbar {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(229, 23, 59, 0.15) 0%, transparent 70%);
   opacity: 0;
   transition: opacity var(--transition-normal);
   pointer-events: none;
 }
 
 .card:hover {
-  border-color: rgba(157, 78, 221, 0.5);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+  border-color: rgba(229, 23, 59, 0.5);
+  box-shadow: 0 0 30px rgba(229, 23, 59, 0.3);
   transform: translateY(-5px);
 }
 
@@ -334,6 +345,7 @@ navbar {
   justify-content: center;
   overflow: hidden;
   padding-top: 60px;
+  background: linear-gradient(135deg, rgba(229, 23, 59, 0.05) 0%, rgba(0, 70, 135, 0.05) 50%, transparent 100%);
 }
 
 .hero::before {
@@ -343,7 +355,7 @@ navbar {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%239d4edd" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23E5173B" stroke-width="0.5" opacity="0.08"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
   opacity: 0.1;
   z-index: 1;
 }
@@ -355,7 +367,7 @@ navbar {
   right: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(229, 23, 59, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
   z-index: 2;
@@ -428,14 +440,14 @@ navbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-accent);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  background: var(--gradient-primary);
+  box-shadow: 0 0 20px rgba(229, 23, 59, 0.4);
   transition: all var(--transition-normal);
 }
 
 .team-card:hover .team-flag {
   transform: scale(1.1) rotate(10deg);
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 35px rgba(229, 23, 59, 0.7);
 }
 
 .team-name {
@@ -457,8 +469,8 @@ navbar {
   align-items: center;
   justify-content: space-between;
   padding: var(--spacing-lg);
-  background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
-  border-left: 4px solid var(--neon-cyan);
+  background: linear-gradient(135deg, rgba(229, 23, 59, 0.1) 0%, rgba(0, 70, 135, 0.05) 100%);
+  border-left: 4px solid var(--primary-red);
   position: relative;
 }
 
@@ -496,14 +508,15 @@ navbar {
 
 .match-status {
   padding: 0.5rem 1rem;
-  background: var(--neon-pink);
+  background: var(--primary-red);
   border-radius: var(--radius-sm);
   font-weight: 700;
   font-size: 0.9rem;
+  color: white;
 }
 
 .match-status.finished {
-  background: var(--neon-green);
+  background: var(--accent-green);
 }
 
 /* ===== TABLA DE POSICIONES ===== */
@@ -515,7 +528,7 @@ navbar {
 }
 
 .standings-table thead {
-  background: linear-gradient(90deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 212, 255, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(229, 23, 59, 0.3) 0%, rgba(0, 70, 135, 0.2) 100%);
 }
 
 .standings-table th {
@@ -523,12 +536,12 @@ navbar {
   text-align: left;
   font-weight: 700;
   color: var(--text-primary);
-  border-bottom: 2px solid var(--neon-purple);
+  border-bottom: 2px solid var(--primary-red);
 }
 
 .standings-table td {
   padding: var(--spacing-md);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.1);
+  border-bottom: 1px solid rgba(229, 23, 59, 0.1);
   color: var(--text-secondary);
 }
 
@@ -537,13 +550,13 @@ navbar {
 }
 
 .standings-table tbody tr:hover {
-  background: rgba(157, 78, 221, 0.1);
+  background: rgba(229, 23, 59, 0.1);
   transform: scale(1.02);
 }
 
 .team-position {
   font-weight: 700;
-  color: var(--neon-cyan);
+  color: var(--primary-red);
   font-size: 1.1rem;
 }
 
@@ -557,7 +570,7 @@ navbar {
 .news-image {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -583,7 +596,7 @@ navbar {
 }
 
 .read-more {
-  color: var(--neon-cyan);
+  color: var(--primary-red);
   text-decoration: none;
   font-weight: 700;
   display: inline-flex;
@@ -593,13 +606,13 @@ navbar {
 
 .read-more:hover {
   gap: var(--spacing-sm);
-  color: var(--neon-pink);
+  color: var(--primary-blue);
 }
 
 /* ===== FOOTER ===== */
 footer {
-  background: rgba(10, 14, 39, 0.95);
-  border-top: 1px solid rgba(157, 78, 221, 0.2);
+  background: rgba(15, 22, 33, 0.97);
+  border-top: 2px solid var(--primary-red);
   padding: var(--spacing-xl) 0;
   margin-top: var(--spacing-xl);
 }
@@ -613,7 +626,7 @@ footer {
 
 .footer-section h4 {
   margin-bottom: var(--spacing-md);
-  color: var(--text-primary);
+  color: var(--primary-red);
 }
 
 .footer-section ul {
@@ -631,13 +644,13 @@ footer {
 }
 
 .footer-section a:hover {
-  color: var(--neon-cyan);
+  color: var(--primary-red);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: var(--spacing-lg);
-  border-top: 1px solid rgba(157, 78, 221, 0.1);
+  border-top: 1px solid rgba(229, 23, 59, 0.2);
   color: var(--text-tertiary);
 }
 
@@ -655,19 +668,19 @@ footer {
 .badge-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: var(--glow-md);
+  box-shadow: var(--glow-red);
 }
 
 .badge-secondary {
-  background: rgba(0, 240, 255, 0.2);
-  color: var(--neon-cyan);
-  border: 1px solid var(--neon-cyan);
+  background: rgba(0, 70, 135, 0.2);
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
 }
 
 .badge-success {
   background: rgba(0, 255, 136, 0.2);
-  color: var(--neon-green);
-  border: 1px solid var(--neon-green);
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
 }
 
 /* ===== UTILIDADES ===== */
@@ -683,7 +696,7 @@ footer {
 }
 
 .glow {
-  text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+  text-shadow: 0 0 10px rgba(229, 23, 59, 0.6);
 }
 
 .hidden {
