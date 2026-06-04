@@ -1,0 +1,5 @@
+[
+  { "rank": 1, "player": "Lionel Messi", "team": "Argentina", "goals": 5, "matches": 3, "notes": "Hat-trick en fase de grupos" },
+  { "rank": 2, "player": "Kylian Mbappé", "team": "France", "goals": 4, "matches": 3, "notes": "Tantos decisivos" },
+  { "rank": 3, "player": "Erling Haaland", "team": "Noruega", "goals": 3, "matches": 2, "notes": "Gran promedio" }
+]

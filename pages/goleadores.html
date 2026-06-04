@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Goleadores - Mundial 2026</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    :root{
+      --accent:#0ea5a4; /* teal */
+      --muted:#6b7280;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.04);
+    }
+    body{background:linear-gradient(180deg,#05060a 0%, #071029 100%);color:#e6eef8;font-family:inherit}
+    main{max-width:980px;margin:3rem auto;padding:1.5rem}
+    h1{font-size:1.9rem;margin-bottom:0.25rem}
+    .subtitle{color:var(--muted);margin-bottom:1rem}
+
+    .scorers-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:1rem;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+    .table-wrap{overflow:auto;border-radius:8px;margin-top:0.75rem}
+    table.scorers-table{width:100%;border-collapse:separate;border-spacing:0;background:transparent}
+    table.scorers-table thead th{position:sticky;top:0;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:#cfeff0;padding:0.75rem 1rem;text-align:left;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.04)}
+    table.scorers-table tbody td{background:rgba(255,255,255,0.02);padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.02);vertical-align:middle}
+    table.scorers-table tbody tr:hover td{background:rgba(14,165,164,0.06)}
+
+    .rank-badge{display:inline-block;min-width:34px;text-align:center;padding:0.25rem 0.5rem;border-radius:999px;background:rgba(255,255,255,0.04);color:#e6eef8;font-weight:700}
+    .player-name{display:flex;align-items:center;gap:0.75rem}
+    .player-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0ea5a4,#2563eb);display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .team-pill{display:inline-block;padding:0.25rem 0.6rem;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:600}
+
+    .goals{font-size:1.2rem;font-weight:800;color:var(--accent);text-align:center}
+    .matches{color:var(--muted);text-align:center}
+    .notes{color:var(--muted);font-size:0.95rem}
+
+    @media (max-width:640px){
+      .player-avatar{width:34px;height:34px}
+      table.scorers-table thead th:nth-child(6), table.scorers-table tbody td:nth-child(6){display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container">
+      <div class="navbar">
+        <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="teams.html">Equipos</a></li>
+          <li><a href="matches.html">Partidos</a></li>
+          <li><a href="standings.html">Posiciones</a></li>
+          <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="goleadores.html" class="active">Goleadores destacados</a></li>
+          <li><a href="news.html">Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Goleadores Destacados — Copa Mundial 2026</h1>
+    <p class="subtitle">Los máximos artilleros del torneo hasta la fecha. Datos actualizables desde <code>data/top_scorers.json</code>.</p>
+
+    <section class="scorers-card" aria-labelledby="scorers-heading">
+      <h2 id="scorers-heading" style="margin:0 0 0.5rem 0;font-size:1.05rem;color:#cfeff0">Top goleadores</h2>
+      <div class="table-wrap">
+        <table class="scorers-table" aria-describedby="scorers-desc">
+          <caption id="scorers-desc" style="position:absolute;left:-9999px;">Listado de los goleadores más destacados del torneo</caption>
+          <thead>
+            <tr>
+              <th style="width:64px">#</th>
+              <th>Jugador</th>
+              <th>Selección</th>
+              <th style="width:90px;text-align:center">Goles</th>
+              <th style="width:90px;text-align:center">Partidos</th>
+              <th>Notas</th>
+            </tr>
+          </thead>
+          <tbody id="scorers-body">
+            <!-- Se cargan dinámicamente desde data/top_scorers.json -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="muted" style="margin-top:0.85rem">¿Quieres que la tabla se genere automáticamente desde los datos de los partidos? Puedo también extraer goles desde <code>data/matches.json</code> si prefieres.</p>
+  </main>
+
+  <script>
+    async function loadScorers(){
+      try{
+        const res = await fetch('../data/top_scorers.json');
+        if(!res.ok) throw new Error('No se pudo cargar top_scorers.json');
+        const data = await res.json();
+        const tbody = document.getElementById('scorers-body');
+        tbody.innerHTML = '';
+        data.sort((a,b)=> (b.goals||0) - (a.goals||0));
+        data.forEach((s,idx)=>{
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><span class="rank-badge">${s.rank||idx+1}</span></td>
+            <td>
+              <div class="player-name">
+                <div class="player-avatar">${(s.player||'')[0]||'?'}</div>
+                <div>
+                  <div style="font-weight:700">${s.player}</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="team-pill">${s.team||''}</span></td>
+            <td class="goals">${s.goals||0}</td>
+            <td class="matches">${s.matches||0}</td>
+            <td class="notes">${s.notes||''}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }catch(e){
+        console.warn(e);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadScorers);
+  </script>
+</body>
+</html>
