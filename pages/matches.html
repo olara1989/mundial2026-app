@@ -24,6 +24,8 @@
     .modal-body{font-size:0.98rem;line-height:1.4}
     .modal-row{display:flex;justify-content:space-between;padding:0.5rem 0;border-top:1px solid #f0f0f0}
     .btn-detail{padding:0.5rem 0.75rem;border-radius:6px;border:1px solid var(--neon-cyan);background:transparent;color:var(--neon-cyan);cursor:pointer;font-weight:700}
+    .group-btn,.status-btn{padding:0.65rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.18);background:transparent;color:white;cursor:pointer;font-weight:700;opacity:0.7;transition:opacity 0.2s, border-color 0.2s}
+    .group-btn:hover,.status-btn:hover,.group-btn.active,.status-btn.active{opacity:1;border-color:var(--neon-cyan)}
   </style>
 </head>
 <body>
@@ -63,8 +65,8 @@
   <section class="section">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: 2rem;">FILTRAR PARTIDOS</h2>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-        <button onclick="filterMatches('all')" style="
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+        <button class="status-btn active" onclick="setStatusFilter('all')" style="
           padding: 0.75rem 1.5rem;
           background: var(--gradient-primary);
           color: white;
@@ -73,7 +75,7 @@
           cursor: pointer;
           font-weight: 700;
         ">TODOS</button>
-        <button onclick="filterMatches('upcoming')" style="
+        <button class="status-btn" onclick="setStatusFilter('upcoming')" style="
           padding: 0.75rem 1.5rem;
           background: transparent;
           color: var(--neon-cyan);
@@ -83,7 +85,7 @@
           font-weight: 700;
           opacity: 0.6;
         ">POR JUGAR</button>
-        <button onclick="filterMatches('finished')" style="
+        <button class="status-btn" onclick="setStatusFilter('finished')" style="
           padding: 0.75rem 1.5rem;
           background: transparent;
           color: var(--neon-green);
@@ -93,6 +95,9 @@
           font-weight: 700;
           opacity: 0.6;
         ">FINALIZADOS</button>
+      </div>
+      <div id="group-filters" style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+        <!-- Botones de grupo generados dinámicamente -->
       </div>
     </div>
   </section>
@@ -147,15 +152,34 @@
   <script src="../js/navigation.js"></script>
   <script>
     let allMatches = [];
+    let teamGroups = {};
+    let activeStatusFilter = 'all';
+    let activeGroupFilter = 'all';
 
     async function loadMatches() {
       try {
-        allMatches = await api.getMatches();
+        const [matches, teams] = await Promise.all([api.getMatches(), api.getTeams()]);
+        allMatches = matches;
+        teamGroups = teams.reduce((acc, team) => {
+          acc[team.name] = team.group;
+          return acc;
+        }, {});
+
+        const groups = [...new Set(teams.map(team => team.group))].sort();
+        renderGroupButtons(groups);
         renderMatches(allMatches);
       } catch (error) {
         console.error('Error:', error);
         document.getElementById('matches-container').innerHTML = '<p class="error">Error al cargar partidos</p>';
       }
+    }
+
+    function renderGroupButtons(groups) {
+      const container = document.getElementById('group-filters');
+      container.innerHTML = `
+        <button class="group-btn active" onclick="setGroupFilter('all')">TODOS LOS GRUPOS</button>
+        ${groups.map(group => `<button class="group-btn" onclick="setGroupFilter('${group}')">Grupo ${group}</button>`).join('')}
+      `;
     }
 
     function renderMatches(matches) {
@@ -209,13 +233,47 @@
       });
     }
 
-    function filterMatches(status) {
-      if (status === 'all') {
-        renderMatches(allMatches);
-      } else {
-        const filtered = allMatches.filter(m => m.status === status);
-        renderMatches(filtered);
+    function filterMatches() {
+      let filteredMatches = allMatches;
+
+      if (activeStatusFilter !== 'all') {
+        filteredMatches = filteredMatches.filter(match => match.status === activeStatusFilter);
       }
+
+      if (activeGroupFilter !== 'all') {
+        filteredMatches = filteredMatches.filter(match => matchBelongsToGroup(match, activeGroupFilter));
+      }
+
+      renderMatches(filteredMatches);
+    }
+
+    function matchBelongsToGroup(match, group) {
+      return teamGroups[match.team_a] === group || teamGroups[match.team_b] === group;
+    }
+
+    function setStatusFilter(status) {
+      activeStatusFilter = status;
+      updateActiveButtons('status', status);
+      filterMatches();
+    }
+
+    function setGroupFilter(group) {
+      activeGroupFilter = group;
+      updateActiveButtons('group', group);
+      filterMatches();
+    }
+
+    function updateActiveButtons(type, value) {
+      const selector = type === 'status' ? '.status-btn' : '.group-btn';
+      document.querySelectorAll(selector).forEach(button => {
+        button.classList.remove('active');
+      });
+      const allButtons = document.querySelectorAll(selector);
+      allButtons.forEach(button => {
+        if (button.getAttribute('onclick')?.includes(`'${value}'`)) {
+          button.classList.add('active');
+        }
+      });
     }
 
     function showMatchDetailsById(id){
