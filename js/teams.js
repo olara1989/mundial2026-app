@@ -12,6 +12,7 @@ class TeamsManager {
     this.filteredTeams = [];
     this.selectedGroup = 'ALL';
     this.teamsContainer = document.getElementById('teams-grid');
+    this.teamsTotal = document.getElementById('teams-total');
   }
 
   /**
@@ -50,6 +51,14 @@ class TeamsManager {
 
     this.teamsContainer.innerHTML = '';
 
+    if (this.teamsTotal) {
+      const summaryText = this.selectedGroup === 'ALL'
+        ? `${this.filteredTeams.length} selecciones clasificadas`
+        : `${this.filteredTeams.length} equipos en Grupo ${this.selectedGroup}`;
+
+      this.teamsTotal.textContent = summaryText;
+    }
+
     // Efecto de carga
     this.teamsContainer.classList.add('stagger-container');
 
@@ -69,38 +78,86 @@ class TeamsManager {
   }
 
   /**
+   * Crea una clave segura a partir del nombre del equipo
+   * @param {string} name - Nombre del equipo
+   * @returns {string}
+   */
+  slugifyTeamName(name) {
+    return name.toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  }
+
+  /**
+   * Devuelve la ruta de la imagen de la bandera según el nombre del equipo
+   * @param {Object} team
+   * @returns {string}
+   */
+  getFlagImagePath(team) {
+    const fileName = `${this.slugifyTeamName(team.name)}.svg`;
+    const basePath = window.location.pathname.includes('/pages/') ? '../images/flags/' : 'images/flags/';
+    return `${basePath}${fileName}`;
+  }
+
+  /**
    * Crea una tarjeta de equipo
    * @param {Object} team - Datos del equipo
    * @returns {HTMLElement} Elemento de la tarjeta
    */
   createTeamCard(team) {
     const card = document.createElement('div');
-    card.className = 'card team-card';
+    card.className = 'card team-card team-card-full';
     card.style.cursor = 'pointer';
 
+    const goalDiff = team.goal_difference;
+    const diffBadge = goalDiff >= 0
+      ? `<span class="badge badge-success">+${goalDiff}</span>`
+      : `<span class="badge badge-secondary">${goalDiff}</span>`;
+
+    const flagImagePath = this.getFlagImagePath(team);
+
     card.innerHTML = `
-      <div class="team-flag">${team.flag}</div>
+      <div class="team-card-flag">
+        <img src="${flagImagePath}" alt="Bandera de ${team.name}" />
+      </div>
+
+      <div class="team-card-top">
+        <div class="team-card-badges">
+          <span class="badge badge-primary">Clasificado</span>
+          <span class="badge badge-secondary">${team.confederation}</span>
+        </div>
+      </div>
+
       <h3 class="team-name">${team.name}</h3>
+
       <div class="team-info">
         <p><strong>Grupo:</strong> ${team.group}</p>
-        <p><strong>Confederación:</strong> ${team.confederation}</p>
         <p><strong>Entrenador:</strong> ${team.coach}</p>
+        <p><strong>Ranking:</strong> #${team.ranking}</p>
       </div>
-      <div style="width: 100%; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(157, 78, 221, 0.2);">
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.85rem;">
-          <div>
-            <span class="badge badge-primary" style="font-size: 0.75rem;">PJ: ${team.matches_played}</span>
-          </div>
-          <div>
-            <span class="badge badge-success" style="font-size: 0.75rem;">Pts: ${team.points}</span>
-          </div>
-          <div>
-            <span class="badge badge-secondary" style="font-size: 0.75rem;">GF: ${team.goals_for}</span>
-          </div>
-          <div>
-            <span class="badge badge-secondary" style="font-size: 0.75rem;">GC: ${team.goals_against}</span>
-          </div>
+
+      <div class="team-card-stats-grid">
+        <div class="team-stat-item">
+          <span class="team-stat-label">Puntos</span>
+          <span class="team-stat-value">${team.points}</span>
         </div>
+        <div class="team-stat-item">
+          <span class="team-stat-label">PJ</span>
+          <span class="team-stat-value">${team.matches_played}</span>
+        </div>
+        <div class="team-stat-item">
+          <span class="team-stat-label">GF</span>
+          <span class="team-stat-value">${team.goals_for}</span>
+        </div>
+        <div class="team-stat-item">
+          <span class="team-stat-label">GC</span>
+          <span class="team-stat-value">${team.goals_against}</span>
+        </div>
+      </div>
+
+      <div class="team-card-footer">
+        ${diffBadge}
+        <span class="team-record">${team.wins}V • ${team.draws}E • ${team.losses}D</span>
       </div>
     `;
 
