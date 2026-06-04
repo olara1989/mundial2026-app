@@ -5,56 +5,48 @@
 
 /* ===== VARIABLES CSS - IDENTIDAD OFICIAL 2026 ===== */
 :root {
-  /* Colores Oficiales FIFA World Cup 2026 */
-  --primary-red: #E5173B;        /* Rojo oficial */
-  --primary-blue: #004687;       /* Azul oficial */
-  --primary-silver: #B4B4B6;     /* Plateado oficial */
-  --accent-gold: #FFD700;        /* Dorado para acentos */
-  
-  /* Paleta secundaria */
-  --dark-bg: #0f1621;            /* Fondo oscuro */
-  --secondary-bg: #1a2332;       /* Fondo secundario */
-  --tertiary-bg: #2d3d5f;        /* Fondo terciario */
-  
-  /* Gradientes basados en identidad oficial */
-  --gradient-primary: linear-gradient(135deg, #E5173B 0%, #004687 50%, #B4B4B6 100%);
-  --gradient-secondary: linear-gradient(135deg, #E5173B 0%, #FFD700 50%, #004687 100%);
-  --gradient-accent: linear-gradient(135deg, #004687 0%, #E5173B 50%, #FFD700 100%);
-  
-  /* Colores de acentos mejorados */
-  --accent-red: #FF4444;
-  --accent-blue: #0066FF;
-  --accent-green: #00DD88;
-  --accent-gold: #FFD700;
-  --neon-cyan: #00f0ff;
-  --neon-purple: #9d4edd;
-  --neon-pink: #ff2d85;
-  --neon-green: #2dff99;
-  
-  /* Colores de texto */
-  --text-primary: #ffffff;
-  --text-secondary: #d0d0d0;
-  --text-tertiary: #808080;
-  
-  /* Sombras y efectos */
-  --shadow-sm: 0 4px 15px rgba(229, 23, 59, 0.15);
-  --shadow-md: 0 8px 30px rgba(0, 70, 135, 0.2);
-  --shadow-lg: 0 15px 50px rgba(229, 23, 59, 0.25);
-  --glow-red: 0 0 20px rgba(229, 23, 59, 0.4);
-  --glow-blue: 0 0 20px rgba(0, 70, 135, 0.4);
-  
+
+  /* Paleta inspirada en Brasil 2014 (versión clara) */
+  --brazil-yellow: #FFCC00;
+  --brazil-green: #009b3a;
+  --brazil-blue: #002776;
+  --brazil-sky: #00AEEF;
+
+  /* Fondos y acentos claros */
+  --primary-light: #e8f7ff;
+  --secondary-light: #f7ffec;
+  --accent-gradient: linear-gradient(90deg, rgba(255,204,0,0.95) 0%, rgba(0,155,58,0.95) 100%);
+
+  /* Colores destacados */
+  --accent-yellow: var(--brazil-yellow);
+  --accent-green: var(--brazil-green);
+  --accent-blue: var(--brazil-blue);
+  --accent-sky: var(--brazil-sky);
+
+  /* Tipografía y contraste */
+  --text-primary: #072146;
+  --text-secondary: #254e3a;
+  --text-tertiary: #4b5563;
+
+  /* Sombras y efectos suaves */
+  --shadow-sm: 0 6px 18px rgba(2,56,102,0.06);
+  --shadow-md: 0 10px 40px rgba(2,56,102,0.09);
+  --shadow-lg: 0 18px 60px rgba(2,56,102,0.12);
+  --glow-sm: 0 0 8px rgba(255,204,0,0.12);
+  --glow-md: 0 0 18px rgba(0,155,58,0.12);
+
   /* Espaciados */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
-  
+
   /* Border radius */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
-  
+
   /* Transiciones */
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
@@ -74,7 +66,9 @@ html {
 
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f1621 0%, #1a2332 50%, #0d0f1a 100%);
+
+  background: linear-gradient(180deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
@@ -83,15 +77,17 @@ body {
 
 /* Eliminamos scrollbar feo y agregamos personalizado */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(229, 23, 59, 0.1);
+
+  background: rgba(2,56,102,0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-red);
+  background: linear-gradient(180deg, var(--brazil-yellow), var(--brazil-green));
+
   border-radius: 10px;
 }
 
@@ -108,12 +104,14 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3.5rem;
-  background: var(--gradient-primary);
+  background: linear-gradient(90deg, var(--brazil-yellow), var(--brazil-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-transform: uppercase;
-  text-shadow: 0 0 30px rgba(229, 23, 59, 0.3);
+
+  text-shadow: 0 2px 8px rgba(2,56,102,0.06);
+
 }
 
 h2 {
@@ -196,7 +194,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -724,7 +722,7 @@ nav {
 .standings-table th {
   padding: var(--spacing-md);
   text-align: left;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   border-bottom: 2px solid var(--primary-red);
 }
@@ -909,6 +907,45 @@ footer {
   margin-bottom: var(--spacing-md);
 }
 
+/* ===== HIGHLIGHTS PARA POSICIONES ALTAS ===== */
+.standings-table tbody tr.top-1 {
+  background: linear-gradient(90deg, rgba(255,215,0,0.12), rgba(255,236,153,0.06));
+  box-shadow: 0 6px 18px rgba(255,204,0,0.08);
+}
+
+.standings-table tbody tr.top-2 {
+  background: linear-gradient(90deg, rgba(192,192,192,0.08), rgba(224,224,224,0.04));
+}
+
+.standings-table tbody tr.top-3 {
+  background: linear-gradient(90deg, rgba(205,127,50,0.07), rgba(222,170,125,0.03));
+}
+
+/* Responsive: permitir scroll horizontal en tablas pequeñas */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Controles de búsqueda y filtro (estilos por defecto ya inline, esto es complemento) */
+.standings-controls input,
+.standings-controls select {
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.standings-controls input:focus,
+.standings-controls select:focus {
+  box-shadow: 0 0 12px rgba(157,78,221,0.15);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Animación suave para filas al aparecer */
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.standings-table tbody tr { animation: rowFadeIn 0.45s ease both; }
+
 .success {
   background: rgba(0, 255, 136, 0.1);
   border: 1px solid var(--neon-green);
@@ -916,4 +953,46 @@ footer {
   padding: var(--spacing-md);
   color: var(--neon-green);
   margin-bottom: var(--spacing-md);
+}
+
+/* ===== DECORACIONES FLOTANTES (MASCOTAS y BALONES) ===== */
+.floating-decor {
+  position: relative;
+  pointer-events: none;
+}
+
+.floating-decor .mascot,
+.floating-decor .ball {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.95;
+}
+
+.floating-decor .mascot { border: 4px solid rgba(255,255,255,0.6); }
+.floating-decor .ball { border: 3px solid rgba(2,56,102,0.06); width: 56px; height: 56px; }
+
+/* Animaciones suaves de flotación */
+.float-anim-1 { animation: floatY 6s ease-in-out infinite; }
+.float-anim-2 { animation: floatY 8s ease-in-out infinite; }
+.float-anim-3 { animation: floatY 7s ease-in-out infinite; }
+
+@keyframes floatY {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Ajustes responsive: ocultar decoraciones en pantallas muy pequeñas */
+@media (max-width: 720px) {
+  .floating-decor .mascot { display: none; }
+  .floating-decor .ball { opacity: 0.7; transform: scale(0.9); }
 }
