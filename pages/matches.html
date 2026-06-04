@@ -14,6 +14,17 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/animations.css" />
   <link rel="stylesheet" href="../css/responsive.css" />
+  <style>
+    /* Modal básico para mostrar detalles del partido */
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;z-index:9999}
+    .modal-backdrop.show{display:flex}
+    .modal-card{background:white;padding:1.25rem;border-radius:8px;max-width:520px;width:96%;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}
+    .modal-title{font-size:1.1rem;font-weight:700}
+    .modal-body{font-size:0.98rem;line-height:1.4}
+    .modal-row{display:flex;justify-content:space-between;padding:0.5rem 0;border-top:1px solid #f0f0f0}
+    .btn-detail{padding:0.5rem 0.75rem;border-radius:6px;border:1px solid var(--neon-cyan);background:transparent;color:var(--neon-cyan);cursor:pointer;font-weight:700}
+  </style>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -94,6 +105,19 @@
   </section>
 
   <!-- FOOTER -->
+  <!-- Match details modal -->
+  <div id="match-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Detalle del partido</div>
+        <button id="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- contenido dinámico -->
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -176,6 +200,9 @@
             </div>
             <div class="match-team-flag">${match.flag_b}</div>
           </div>
+          <div style="display:flex;justify-content:center;margin-top:0.75rem">
+            <button class="btn-detail" onclick="showMatchDetailsById(${match.id})">Ver detalle</button>
+          </div>
         `;
 
         container.appendChild(card);
@@ -189,6 +216,37 @@
         const filtered = allMatches.filter(m => m.status === status);
         renderMatches(filtered);
       }
+    }
+
+    function showMatchDetailsById(id){
+      const match = allMatches.find(m => m.id === id);
+      if(match) showMatchDetails(match);
+    }
+
+    function showMatchDetails(match){
+      const modal = document.getElementById('match-modal');
+      const body = document.getElementById('modal-body');
+      const title = document.getElementById('modal-title');
+
+      const dateObj = new Date(match.date);
+      const formattedDate = dateObj.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric'});
+
+      title.textContent = `${match.team_a} vs ${match.team_b}`;
+      body.innerHTML = `
+        <div class="modal-row"><strong>Fecha:</strong><span>${formattedDate} • ${match.time}</span></div>
+        <div class="modal-row"><strong>Estado:</strong><span>${match.status}</span></div>
+        <div class="modal-row"><strong>Estadio:</strong><span>${match.stadium}</span></div>
+        <div class="modal-row"><strong>Ciudad:</strong><span>${match.city}</span></div>
+      `;
+
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+
+      // close handlers
+      const closeBtn = document.getElementById('modal-close');
+      function close(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+      closeBtn.onclick = close;
+      modal.onclick = function(e){ if(e.target === modal) close(); };
     }
 
     loadMatches();
