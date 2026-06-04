@@ -4,47 +4,47 @@
 
 /* ===== VARIABLES CSS ===== */
 :root {
-  /* Colores principales */
-  --primary-dark: #0a0e27;
-  --secondary-dark: #1a1f3a;
-  --tertiary-dark: #2d3561;
-  
-  /* Gradientes neón */
-  --gradient-primary: linear-gradient(135deg, #9d4edd 0%, #3a0ca3 50%, #00d4ff 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff006e 0%, #fb5607 50%, #ffbe0b 100%);
-  --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #0077be 50%, #9d4edd 100%);
-  
-  /* Colores neón */
-  --neon-cyan: #00f0ff;
-  --neon-purple: #b537f2;
-  --neon-pink: #ff006e;
-  --neon-green: #00ff88;
-  --neon-orange: #ff6b00;
-  
-  /* Colores de texto */
-  --text-primary: #ffffff;
-  --text-secondary: #b0b0d9;
-  --text-tertiary: #6b7280;
-  
-  /* Sombras y efectos */
-  --shadow-sm: 0 4px 15px rgba(157, 78, 221, 0.1);
-  --shadow-md: 0 8px 30px rgba(157, 78, 221, 0.2);
-  --shadow-lg: 0 15px 50px rgba(157, 78, 221, 0.3);
-  --glow-sm: 0 0 10px rgba(0, 240, 255, 0.3);
-  --glow-md: 0 0 20px rgba(157, 78, 221, 0.5);
-  
+  /* Paleta inspirada en Brasil 2014 (versión clara) */
+  --brazil-yellow: #FFCC00;
+  --brazil-green: #009b3a;
+  --brazil-blue: #002776;
+  --brazil-sky: #00AEEF;
+
+  /* Fondos y acentos claros */
+  --primary-light: #e8f7ff;
+  --secondary-light: #f7ffec;
+  --accent-gradient: linear-gradient(90deg, rgba(255,204,0,0.95) 0%, rgba(0,155,58,0.95) 100%);
+
+  /* Colores destacados */
+  --accent-yellow: var(--brazil-yellow);
+  --accent-green: var(--brazil-green);
+  --accent-blue: var(--brazil-blue);
+  --accent-sky: var(--brazil-sky);
+
+  /* Tipografía y contraste */
+  --text-primary: #072146;
+  --text-secondary: #254e3a;
+  --text-tertiary: #4b5563;
+
+  /* Sombras y efectos suaves */
+  --shadow-sm: 0 6px 18px rgba(2,56,102,0.06);
+  --shadow-md: 0 10px 40px rgba(2,56,102,0.09);
+  --shadow-lg: 0 18px 60px rgba(2,56,102,0.12);
+  --glow-sm: 0 0 8px rgba(255,204,0,0.12);
+  --glow-md: 0 0 18px rgba(0,155,58,0.12);
+
   /* Espaciados */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
-  
+
   /* Border radius */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
-  
+
   /* Transiciones */
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
@@ -64,7 +64,7 @@ html {
 
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1633 100%);
+  background: linear-gradient(180deg, var(--primary-light) 0%, var(--secondary-light) 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
@@ -73,15 +73,15 @@ body {
 
 /* Eliminamos scrollbar feo y agregamos personalizado */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(157, 78, 221, 0.1);
+  background: rgba(2,56,102,0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neon-purple);
+  background: linear-gradient(180deg, var(--brazil-yellow), var(--brazil-green));
   border-radius: 10px;
 }
 
@@ -98,12 +98,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3.5rem;
-  background: var(--gradient-primary);
+  background: linear-gradient(90deg, var(--brazil-yellow), var(--brazil-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-transform: uppercase;
-  text-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+  text-shadow: 0 2px 8px rgba(2,56,102,0.06);
 }
 
 h2 {
@@ -143,10 +143,10 @@ navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(10, 14, 39, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(2,56,102,0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar {
@@ -162,7 +162,7 @@ navbar {
   gap: var(--spacing-sm);
   font-size: 1.5rem;
   font-weight: 800;
-  background: var(--gradient-primary);
+  background: linear-gradient(90deg, var(--brazil-blue), var(--brazil-yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -182,7 +182,7 @@ navbar {
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
   position: relative;
@@ -201,7 +201,7 @@ navbar {
 }
 
 .nav-links a:hover {
-  color: var(--text-primary);
+  color: var(--brazil-blue);
 }
 
 .nav-links a:hover::after {
@@ -254,9 +254,9 @@ navbar {
 
 /* Botón primario */
 .btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+  background: linear-gradient(90deg, var(--brazil-yellow), var(--brazil-green));
+  color: var(--text-primary);
+  box-shadow: var(--glow-md);
 }
 
 .btn-primary:hover {
@@ -291,8 +291,8 @@ navbar {
 
 /* ===== TARJETAS ===== */
 .card {
-  background: rgba(45, 53, 97, 0.4);
-  border: 1px solid rgba(157, 78, 221, 0.2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,255,236,0.96));
+  border: 1px solid rgba(2,56,102,0.06);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   backdrop-filter: blur(10px);
@@ -309,16 +309,16 @@ navbar {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,204,0,0.08) 0%, transparent 70%);
   opacity: 0;
   transition: opacity var(--transition-normal);
   pointer-events: none;
 }
 
 .card:hover {
-  border-color: rgba(157, 78, 221, 0.5);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
-  transform: translateY(-5px);
+  border-color: rgba(2,56,102,0.12);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
 }
 
 .card:hover::before {
@@ -515,21 +515,21 @@ navbar {
 }
 
 .standings-table thead {
-  background: linear-gradient(90deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 212, 255, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(255,204,0,0.98) 0%, rgba(0,155,58,0.98) 100%);
 }
 
 .standings-table th {
   padding: var(--spacing-md);
   text-align: left;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
-  border-bottom: 2px solid var(--neon-purple);
+  border-bottom: 2px solid rgba(2,56,102,0.08);
 }
 
 .standings-table td {
   padding: var(--spacing-md);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.1);
-  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(2,56,102,0.04);
+  color: var(--text-primary);
 }
 
 .standings-table tbody tr {
@@ -537,13 +537,13 @@ navbar {
 }
 
 .standings-table tbody tr:hover {
-  background: rgba(157, 78, 221, 0.1);
-  transform: scale(1.02);
+  background: rgba(255,241,204,0.6);
+  transform: translateY(-2px);
 }
 
 .team-position {
-  font-weight: 700;
-  color: var(--neon-cyan);
+  font-weight: 800;
+  color: var(--brazil-blue);
   font-size: 1.1rem;
 }
 
@@ -557,7 +557,7 @@ navbar {
 .news-image {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  background: linear-gradient(135deg, var(--brazil-blue), var(--brazil-sky));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -706,6 +706,45 @@ footer {
   margin-bottom: var(--spacing-md);
 }
 
+/* ===== HIGHLIGHTS PARA POSICIONES ALTAS ===== */
+.standings-table tbody tr.top-1 {
+  background: linear-gradient(90deg, rgba(255,215,0,0.12), rgba(255,236,153,0.06));
+  box-shadow: 0 6px 18px rgba(255,204,0,0.08);
+}
+
+.standings-table tbody tr.top-2 {
+  background: linear-gradient(90deg, rgba(192,192,192,0.08), rgba(224,224,224,0.04));
+}
+
+.standings-table tbody tr.top-3 {
+  background: linear-gradient(90deg, rgba(205,127,50,0.07), rgba(222,170,125,0.03));
+}
+
+/* Responsive: permitir scroll horizontal en tablas pequeñas */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Controles de búsqueda y filtro (estilos por defecto ya inline, esto es complemento) */
+.standings-controls input,
+.standings-controls select {
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.standings-controls input:focus,
+.standings-controls select:focus {
+  box-shadow: 0 0 12px rgba(157,78,221,0.15);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Animación suave para filas al aparecer */
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.standings-table tbody tr { animation: rowFadeIn 0.45s ease both; }
+
 .success {
   background: rgba(0, 255, 136, 0.1);
   border: 1px solid var(--neon-green);
@@ -713,4 +752,46 @@ footer {
   padding: var(--spacing-md);
   color: var(--neon-green);
   margin-bottom: var(--spacing-md);
+}
+
+/* ===== DECORACIONES FLOTANTES (MASCOTAS y BALONES) ===== */
+.floating-decor {
+  position: relative;
+  pointer-events: none;
+}
+
+.floating-decor .mascot,
+.floating-decor .ball {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.95;
+}
+
+.floating-decor .mascot { border: 4px solid rgba(255,255,255,0.6); }
+.floating-decor .ball { border: 3px solid rgba(2,56,102,0.06); width: 56px; height: 56px; }
+
+/* Animaciones suaves de flotación */
+.float-anim-1 { animation: floatY 6s ease-in-out infinite; }
+.float-anim-2 { animation: floatY 8s ease-in-out infinite; }
+.float-anim-3 { animation: floatY 7s ease-in-out infinite; }
+
+@keyframes floatY {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Ajustes responsive: ocultar decoraciones en pantallas muy pequeñas */
+@media (max-width: 720px) {
+  .floating-decor .mascot { display: none; }
+  .floating-decor .ball { opacity: 0.7; transform: scale(0.9); }
 }
