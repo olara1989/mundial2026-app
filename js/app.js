@@ -14,6 +14,10 @@ class WorldCupApp {
     this.standingsContainer = document.getElementById('standings-container');
     this.newsGrid = document.getElementById('news-grid');
     this.statsContainer = document.getElementById('stats-container');
+    this.tournamentInfoContainer = document.getElementById('tournament-info-container');
+    this.venuesContainer = document.getElementById('venues-container');
+    this.mascotsContainer = document.getElementById('mascots-container');
+    this.factsContainer = document.getElementById('facts-container');
   }
 
   /**
@@ -67,6 +71,26 @@ class WorldCupApp {
    */
   async loadHomePageData() {
     try {
+      // Cargar información general del torneo
+      if (this.tournamentInfoContainer) {
+        await this.loadTournamentInfo();
+      }
+
+      // Cargar sedes y ciudades
+      if (this.venuesContainer) {
+        await this.loadVenues();
+      }
+
+      // Cargar mascotas
+      if (this.mascotsContainer) {
+        await this.loadMascots();
+      }
+
+      // Cargar hechos destacados
+      if (this.factsContainer) {
+        await this.loadFacts();
+      }
+
       // Cargar equipos destacados
       if (this.teamsGrid) {
         await this.loadFeaturedTeams();
@@ -114,7 +138,7 @@ class WorldCupApp {
             <p><strong>Grupo ${team.group}</strong></p>
             <p>${team.confederation}</p>
           </div>
-          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(157, 78, 221, 0.2);">
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(229, 23, 59, 0.2);">
             <span class="badge badge-primary">Puntos: ${team.points}</span>
           </div>
         `;
@@ -388,6 +412,178 @@ class WorldCupApp {
       console.log('✅ Estadísticas cargadas');
     } catch (error) {
       console.error('❌ Error al cargar estadísticas:', error);
+    }
+  }
+
+  /**
+   * Carga información general del torneo
+   */
+  async loadTournamentInfo() {
+    try {
+      const response = await fetch('data/tournament-info.json');
+      const data = await response.json();
+      const info = data.general;
+      const hosts = data.hosts;
+
+      this.tournamentInfoContainer.innerHTML = '';
+      this.tournamentInfoContainer.classList.add('stagger-container');
+
+      // Tarjeta de información general
+      const infoCard = document.createElement('div');
+      infoCard.className = 'card';
+      infoCard.style.animation = `slideUp 0.6s ease-out`;
+      infoCard.innerHTML = `
+        <h3 style="color: var(--neon-cyan); margin-bottom: 1rem;">📅 TORNEO</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Nombre</p>
+            <p style="color: var(--text-primary); font-weight: 600;">${info.name}</p>
+          </div>
+          <div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Fechas</p>
+            <p style="color: var(--text-primary); font-weight: 600;">${new Date(info.startDate).toLocaleDateString('es-ES')} - ${new Date(info.endDate).toLocaleDateString('es-ES')}</p>
+          </div>
+          <div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Equipos</p>
+            <p style="color: var(--text-primary); font-weight: 600;">${info.totalTeams} equipos • ${info.totalMatches} partidos</p>
+          </div>
+        </div>
+      `;
+      this.tournamentInfoContainer.appendChild(infoCard);
+
+      // Tarjeta de países anfitriones
+      const hostsCard = document.createElement('div');
+      hostsCard.className = 'card';
+      hostsCard.style.animation = `slideUp 0.6s ease-out 0.1s both`;
+      hostsCard.innerHTML = `
+        <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">🌎 PAÍSES ANFITRIONES</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          ${hosts.countries.map(country => `
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="font-size: 2rem;">${country.flag}</span>
+              <div>
+                <p style="color: var(--text-primary); font-weight: 600;">${country.name}</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">${country.role}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      this.tournamentInfoContainer.appendChild(hostsCard);
+
+      console.log('✅ Información general cargada');
+    } catch (error) {
+      console.error('❌ Error al cargar información general:', error);
+    }
+  }
+
+  /**
+   * Carga sedes y ciudades
+   */
+  async loadVenues() {
+    try {
+      const response = await fetch('data/tournament-info.json');
+      const data = await response.json();
+      const venues = data.venues;
+
+      this.venuesContainer.innerHTML = '';
+      this.venuesContainer.classList.add('stagger-container');
+
+      venues.forEach((venue, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.animation = `slideUp 0.6s ease-out ${index * 0.05}s both`;
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+            <h4 style="color: var(--primary-red); margin: 0;">${venue.name}</h4>
+            <span style="font-size: 1.5rem; color: var(--primary-blue);">🏟️</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <p style="margin: 0; color: var(--text-secondary);"><strong>Ciudad:</strong> ${venue.city}</p>
+            <p style="margin: 0; color: var(--text-secondary);"><strong>País:</strong> ${venue.country}</p>
+            <p style="margin: 0; color: var(--text-secondary);"><strong>Región:</strong> ${venue.region}</p>
+            <p style="margin: 0; color: var(--primary-red); font-weight: 600;"><strong>Capacidad:</strong> ${venue.capacity.toLocaleString()} espectadores</p>
+          </div>
+        `;
+
+        this.venuesContainer.appendChild(card);
+      });
+
+      console.log('✅ Sedes y ciudades cargadas');
+    } catch (error) {
+      console.error('❌ Error al cargar sedes:', error);
+    }
+  }
+
+  /**
+   * Carga mascotas oficiales
+   */
+  async loadMascots() {
+    try {
+      const response = await fetch('data/tournament-info.json');
+      const data = await response.json();
+      const mascots = data.mascots;
+
+      this.mascotsContainer.innerHTML = '';
+      this.mascotsContainer.classList.add('stagger-container');
+
+      mascots.forEach((mascot, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.animation = `slideUp 0.6s ease-out ${index * 0.1}s both`;
+
+        card.innerHTML = `
+          <div style="text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">${mascot.emoji}</div>
+            <h3 style="color: var(--primary-red); margin-bottom: 0.5rem;">${mascot.name}</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">${mascot.description}</p>
+            <span class="badge badge-secondary" style="margin-top: 0.5rem;">Color: ${mascot.color}</span>
+          </div>
+        `;
+
+        this.mascotsContainer.appendChild(card);
+      });
+
+      console.log('✅ Mascotas cargadas');
+    } catch (error) {
+      console.error('❌ Error al cargar mascotas:', error);
+    }
+  }
+
+  /**
+   * Carga hechos destacados
+   */
+  async loadFacts() {
+    try {
+      const response = await fetch('data/tournament-info.json');
+      const data = await response.json();
+      const facts = data.facts;
+
+      this.factsContainer.innerHTML = '';
+      this.factsContainer.classList.add('stagger-container');
+
+      facts.forEach((fact, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.animation = `slideUp 0.6s ease-out ${index * 0.1}s both`;
+
+        card.innerHTML = `
+          <div style="display: flex; gap: 1rem; align-items: start;">
+            <div style="font-size: 2.5rem; flex-shrink: 0;">${fact.icon}</div>
+            <div>
+              <h4 style="color: var(--primary-red); margin-top: 0; margin-bottom: 0.5rem;">${fact.title}</h4>
+              <p style="color: var(--text-secondary); margin: 0;">${fact.description}</p>
+            </div>
+          </div>
+        `;
+
+        this.factsContainer.appendChild(card);
+      });
+
+      console.log('✅ Hechos destacados cargados');
+    } catch (error) {
+      console.error('❌ Error al cargar hechos:', error);
     }
   }
 

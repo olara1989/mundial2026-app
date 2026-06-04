@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/world-cup-2026-branding.css" />
 
   <!-- Meta tags para redes sociales -->
   <meta property="og:title" content="World Cup 2026 Hub" />
@@ -33,12 +34,17 @@
 </head>
 <body>
   <!-- ===== NAVBAR ===== -->
-  <navbar>
+  <nav>
     <div class="container">
       <div class="navbar">
         <a href="index.html" class="nav-brand">
           ⚽ World Cup 2026
         </a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
         <ul class="nav-links">
           <li><a href="index.html" class="active">Inicio</a></li>
@@ -50,13 +56,24 @@
         </ul>
       </div>
     </div>
-  </navbar>
+  </nav>
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="hero-banner">🏆 FIFA WORLD CUP 2026</div>
         <h1>🌍 WORLD CUP 2026</h1>
+        <p class="hero-tagline">
+          La ruta hacia la gloria comienza en América del Norte. Vive cada gol,
+          cada estadio y cada rivalidad histórica.
+        </p>
+
+        <div class="hero-highlights">
+          <span>48 equipos</span>
+          <span>16 sedes</span>
+          <span>75 partidos</span>
+        </div>
 
         <p>
           La fiesta más grande del fútbol mundial llegará a América del Norte.
@@ -72,6 +89,38 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== INFORMACIÓN GENERAL DEL MUNDIAL ===== -->
+  <section class="section" id="tournament-info-section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">📋 INFORMACIÓN GENERAL</h2>
+      <div id="tournament-info-container" class="grid-2"></div>
+    </div>
+  </section>
+
+  <!-- ===== SEDES Y CIUDADES ===== -->
+  <section class="section" id="venues-section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">🏟️ SEDES Y CIUDADES</h2>
+      <div id="venues-container" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== MASCOTAS OFICIALES ===== -->
+  <section class="section" id="mascots-section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">🎭 MASCOTAS OFICIALES</h2>
+      <div id="mascots-container" class="grid-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== HECHOS DESTACADOS ===== -->
+  <section class="section" id="facts-section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 2rem;">⭐ HECHOS DESTACADOS</h2>
+      <div id="facts-container" class="grid-2"></div>
     </div>
   </section>
 
@@ -213,6 +262,7 @@
 
   <!-- Scripts -->
   <script src="js/api.js"></script>
+  <script src="js/navigation.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
