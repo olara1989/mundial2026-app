@@ -17,21 +17,27 @@
 </head>
 <body>
   <!-- NAVBAR -->
-  <navbar>
+  <nav>
     <div class="container">
       <div class="navbar">
         <a href="../index.html" class="nav-brand">⚽ World Cup 2026</a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul class="nav-links">
           <li><a href="../index.html">Inicio</a></li>
           <li><a href="teams.html" class="active">Equipos</a></li>
           <li><a href="matches.html">Partidos</a></li>
           <li><a href="standings.html">Posiciones</a></li>
           <li><a href="stadiums.html">Estadios</a></li>
+          <li><a href="goleadores.html">Goleadores destacados</a></li>
           <li><a href="news.html">Noticias</a></li>
         </ul>
       </div>
     </div>
-  </navbar>
+  </nav>
 
   <!-- HERO -->
   <section class="hero" style="height: 40vh; padding-top: 80px;">
@@ -198,6 +204,7 @@
   </footer>
 
   <script src="../js/api.js"></script>
+  <script src="../js/navigation.js"></script>
   <script src="../js/teams.js"></script>
 </body>
 </html>
